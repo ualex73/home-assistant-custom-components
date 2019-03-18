@@ -168,7 +168,7 @@ class ToonSmartMeterSensor(Entity):
                     self._dev_id['gasused'] = key
                     self._dev_id['gasusedcnt'] = key
 
-                 if dev['type'] == 'HAE_METER_v2_2':
+                if dev['type'] == 'HAE_METER_v2_2':
                     self._dev_id['elecusageflowpulse'] = key
                     self._dev_id['elecusagecntpulse'] = key
    
