@@ -201,7 +201,7 @@ class ToonSmartMeterSensor(Entity):
 
         elif self.type == 'elecusageflowpulse':
             if self.type in self._dev_id:
-                if 'CurrentElectricityFlow' in self._dev_id[self.type]]:
+                if 'CurrentElectricityFlow' in energy[self._dev_id[self.type]]:
                     self._state = energy[self._dev_id[self.type]]["CurrentElectricityFlow"]
 
         elif self.type == 'elecusagecntpulse':
