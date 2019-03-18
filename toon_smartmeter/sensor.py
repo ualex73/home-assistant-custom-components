@@ -168,6 +168,10 @@ class ToonSmartMeterSensor(Entity):
                     self._dev_id['gasused'] = key
                     self._dev_id['gasusedcnt'] = key
 
+                 if dev['type'] == 'HAE_METER_v2_2':
+                    self._dev_id['elecusageflowpulse'] = key
+                    self._dev_id['elecusagecntpulse'] = key
+   
                 if dev['type'] == 'elec_delivered_lt' or dev['type'] == 'HAE_METER_v2_5':
                     self._dev_id['elecusageflowlow'] = key
                     self._dev_id['elecusagecntlow'] = key
@@ -196,20 +200,14 @@ class ToonSmartMeterSensor(Entity):
                 self._state = float(energy[self._dev_id[self.type]]["CurrentGasQuantity"])/1000
 
         elif self.type == 'elecusageflowpulse':
-            if 'dev_3.2' in energy:
-                self._state = energy["dev_3.2"]["CurrentElectricityFlow"]
-            elif 'dev_2.2' in energy:
-                self._state = energy["dev_2.2"]["CurrentElectricityFlow"]
-            elif 'dev_4.2' in energy:
-                self._state = energy["dev_4.2"]["CurrentElectricityFlow"]
+            if self.type in self._dev_id:
+                if 'CurrentElectricityFlow' in self._dev_id[self.type]]:
+                    self._state = energy[self._dev_id[self.type]]["CurrentElectricityFlow"]
 
         elif self.type == 'elecusagecntpulse':
-            if 'dev_3.2' in energy:
-                self._state = float(energy["dev_3.2"]["CurrentElectricityQuantity"])/1000
-            elif 'dev_2.2' in energy:
-                self._state = float(energy["dev_2.2"]["CurrentElectricityQuantity"])/1000
-            elif 'dev_4.2' in energy:
-                self._state = float(energy["dev_4.2"]["CurrentElectricityQuantity"])/1000
+            if self.type in self._dev_id:
+                if 'CurrentElectricityQuantity' in energy[self._dev_id[self.type]]:
+                self._state = float(energy[self._dev_id[self.type]]["CurrentElectricityQuantity"])/1000
 
         elif self.type == 'elecusageflowlow':
             if self.type in self._dev_id:
