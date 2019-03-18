@@ -1,7 +1,7 @@
 """
 Support for reading SmartMeter data through Eneco's Toon thermostats.
 Only works for rooted Toon.
-XXX
+
 configuration.yaml
 
 sensor:
